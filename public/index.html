@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f7f2">
+  <meta name="description" content="나만의 새로운 스타일을 발견하는 AI 가상 스타일링 스튜디오">
+  <title>FORME — AI Styling Studio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header"><a class="logo" href="./" aria-label="FORME 홈">forme<span>®</span></a><nav aria-label="메인 메뉴"><a class="active" href="#studio">스타일링 스튜디오</a><a href="#inspiration">스타일 둘러보기 <span>↗</span></a></nav><span class="header-note"><i></i> A NEW WAY TO BE YOU</span></header>
+  <main>
+    <section class="intro"><div><div class="eyebrow"><span></span> YOUR PERSONAL AI STYLIST</div><h1>새로운 나를 입는 순간<span>.</span></h1><p>사진 한 장에서 시작되는 새로운 가능성. 당신만의 룩을 발견하세요.</p></div><div class="intro-aside">YOUR STYLE.<br>REIMAGINED.<span>Powered by imagination & AI ↗</span></div></section>
+    <section class="studio" id="studio" aria-label="스타일링 스튜디오">
+      <aside class="settings">
+        <div class="panel-heading"><h2>나만의 스타일 만들기</h2><span>01 — 03</span></div>
+        <div class="step"><h3><b>01</b> 사진 업로드</h3><label class="upload" id="dropzone" for="photo"><input id="photo" type="file" accept="image/jpeg,image/png,image/webp"><span class="upload-icon">↥</span><strong id="upload-title">사진을 끌어오거나 클릭해 주세요</strong><small id="upload-detail">JPG, PNG, WEBP · 최대 4MB</small></label><p class="hint">정면을 바라보는 전신 사진이 가장 좋아요.</p><button class="text-button" id="sample">사진이 없나요? 예시 사진으로 시작하기 <span>↗</span></button></div>
+        <div class="step"><h3><b>02</b> 어떤 스타일을 원하세요?</h3><div class="style-options" role="group" aria-label="스타일 선택">
+          <button class="style-option selected" data-style="casual" aria-pressed="true"><span>☀</span><strong>캐주얼</strong><small>편안하고 자연스럽게</small><i>✓</i></button>
+          <button class="style-option" data-style="business" aria-pressed="false"><span>▣</span><strong>비즈니스</strong><small>단정하고 세련되게</small><i>✓</i></button>
+          <button class="style-option" data-style="street" aria-pressed="false"><span>✳</span><strong>스트리트</strong><small>자유롭고 개성 있게</small><i>✓</i></button>
+          <button class="style-option" data-style="vintage" aria-pressed="false"><span>❋</span><strong>빈티지</strong><small>시간이 만든 멋</small><i>✓</i></button>
+        </div></div>
+        <div class="step requests"><h3><b>03</b> 디테일을 더해 주세요 <span>선택</span></h3><textarea id="prompt" maxlength="500" placeholder="예: 따뜻한 뉴트럴 컬러로, 주말 카페에 어울리는 편안한 룩을 원해요."></textarea><div class="textarea-footer"><span>작은 취향까지 담아 보세요.</span><span id="count">0 / 500</span></div></div>
+        <button class="generate" id="generate"><span>✧</span> 스타일링 생성 <span>↗</span></button><p class="privacy">♧ 생성 시 사진·요청이 OpenAI로 전송돼요.<br>이 앱의 서버에는 파일로 저장하지 않아요. 생성·재생성 시 API 비용이 발생할 수 있어요.</p>
+      </aside>
+      <section class="preview" aria-labelledby="preview-title"><div class="preview-heading"><div><span class="eyebrow">THE STYLING ROOM</span><h2 id="preview-title">당신의 다음 룩, 미리 만나보세요.</h2></div><span class="demo-badge"><i></i> DEMO PREVIEW</span></div>
+        <div class="preview-toolbar"><div class="view-tabs" role="group" aria-label="비교 보기 방식"><button id="side-view" class="selected" aria-pressed="true">▥ 나란히 보기</button><button id="slider-view" aria-pressed="false">◫ 슬라이더 비교</button></div><span class="preview-counter">BEFORE & AFTER</span></div>
+        <div class="comparison" id="comparison"><figure class="image-frame original-frame"><img id="original" src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1000&q=85" alt="원본 예시: 블랙 의상을 입은 인물"><figcaption>ORIGINAL <span>원본 사진</span></figcaption><span class="photo-label">BEFORE</span></figure><figure class="image-frame result-frame"><img id="result" src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1000&q=85" alt="캐주얼 스타일 예시 룩북"><figcaption>REIMAGINED <span id="result-style">캐주얼 룩</span></figcaption><span class="photo-label light">AFTER <span>✧</span></span><div class="result-stamp">forme<small>CURATED FOR YOU</small></div></figure><div class="slider-line" id="slider-line"><span>‹ ›</span></div><input class="compare-range" id="compare-range" type="range" min="0" max="100" value="50" aria-label="원본과 결과 이미지 비교 비율"></div>
+        <div class="progress" id="progress" hidden><div><span class="spinner"></span><strong id="progress-text">스타일을 분석하고 있어요…</strong><span id="progress-percent">0%</span></div><div class="progress-track"><span id="progress-fill"></span></div></div>
+        <div class="result-info"><div><span class="small-sparkle">✧</span><div><strong id="result-title">평범한 일상에, 새로운 무드.</strong><p id="result-description">편안한 실루엣과 자연스러운 컬러로 완성한 캐주얼 스타일</p></div></div><div class="result-actions"><button class="download" id="regenerate" hidden>↻ <span>다시 생성</span></button><button class="download" id="download" disabled aria-label="생성된 스타일링 이미지 다운로드">↓ <span>이미지 저장</span></button></div></div>
+        <p class="review-note">얼굴·정체성·포즈 및 의상 디테일의 완벽한 보존은 보장되지 않아요. 결과를 원본과 비교한 뒤 저장해 주세요. 재생성은 항상 원본 사진과 현재 선택한 요청을 사용합니다.</p>
+        <p class="demo-note" id="notice" role="status" aria-live="polite">현재는 예시 화면입니다. 사진과 스타일을 선택하고 생성하면 실제 AI 편집이 시작됩니다.</p>
+      </section>
+    </section>
+    <section class="inspiration" id="inspiration"><div class="section-title"><div><span class="eyebrow">FIND YOUR MOOD</span><h2>오늘은, 어떤 당신인가요?</h2></div><p>하나의 나, 무한한 스타일. 새로운 무드를 탐색해 보세요.</p></div><div class="mood-grid">
+      <button class="mood-card" data-style="casual"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=700&q=80" alt="자연스러운 일상 패션" loading="lazy"><div><span>01 / CASUAL</span><h3>Everyday, elevated.</h3><p>익숙한 일상에 가벼운 변화를 <b>↗</b></p></div></button>
+      <button class="mood-card" data-style="business"><img src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=700&q=80" alt="세련된 비즈니스 스타일" loading="lazy"><div><span>02 / BUSINESS</span><h3>Quiet confidence.</h3><p>말하지 않아도 느껴지는 자신감 <b>↗</b></p></div></button>
+      <button class="mood-card" data-style="street"><img src="https://images.unsplash.com/photo-1529139513065-cff63de5ce1c?auto=format&fit=crop&w=700&q=80" alt="개성 있는 스트리트 패션" loading="lazy"><div><span>03 / STREET</span><h3>Make your own rules.</h3><p>당신만의 리듬으로, 자유롭게 <b>↗</b></p></div></button>
+      <button class="mood-card" data-style="vintage"><img src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=700&q=80" alt="시간의 감성을 담은 빈티지 패션" loading="lazy"><div><span>04 / VINTAGE</span><h3>A little nostalgia.</h3><p>시간이 지나도 변하지 않는 취향 <b>↗</b></p></div></button>
+    </div></section>
+    <section class="bottom-note"><span>✳</span><p>트렌드를 넘어, 당신다운 스타일을.<small>Style is a way to say who you are, without having to speak.</small></p><span>forme®</span></section>
+  </main><footer><span>© 2026 FORME STUDIO</span><span>MADE FOR EVERY VERSION OF YOU.</span><a href="#studio">BACK TO TOP ↑</a></footer>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

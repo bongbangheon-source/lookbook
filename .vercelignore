@@ -1,0 +1,5 @@
+.env
+.env.*
+!.env.example
+test/
+실습2_예시이미지.png
